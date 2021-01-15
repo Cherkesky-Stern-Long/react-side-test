@@ -7,5 +7,6 @@ class App extends React.Component {
         )
     }
 }
+// fix gitignore
 
 export default App

@@ -1,5 +1,6 @@
 import React from 'react';
 import languages from "../apis/gAPI";
+import LanguageList from './LanguageList';
 
 class App extends React.Component {
     state = {
@@ -7,9 +8,13 @@ class App extends React.Component {
     }
 
     onLoad = async () => {
-        const response = await languages.get();
-        console.log("response", response.data)
-        this.setState({ languages: response.data})
+        const responses = await languages.get();
+        console.log("responses type", typeof responses.data.Languages)
+        console.log("responses", responses.data.Languages)
+        const arrayedResponses = Object.values(responses)
+        console.log("arrayedResponses", typeof arrayedResponses)
+        console.log("arrayedResponses", arrayedResponses[0])
+        this.setState({ languages: arrayedResponses })
     }
 
     componentDidMount() {
@@ -18,10 +23,9 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>it works</div>
+            <LanguageList languages={this.state.languages} />
         )
     }
 }
-// fix gitignore
 
 export default App

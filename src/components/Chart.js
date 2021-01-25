@@ -2,36 +2,48 @@ import React from "react";
 import { Bar, Line, Pie } from "react-chartjs-2";
 
 const Chart = ({ languages }) => {
-    console.log("languages in chart", typeof languages)
-    console.log("languages in chart", languages.length)
-    let makeLanguageArray = []
-    let makeLanguageCountArray = []
-    for (let i = 0; i < languages.length; i++) {
-        console.log("i type number repos", typeof languages[i][1])
-        makeLanguageArray.push(languages[i][0])
-        makeLanguageCountArray.push(languages[i][1])
-    }
-    console.log("makeLangArr", makeLanguageArray)
-    console.log("makeLangCountArr", makeLanguageCountArray)
-    let testData = {
-        labels: makeLanguageArray,
-        datasets: [{
-            label:"Number of Repos",
-            data:makeLanguageCountArray // number of languages
-        }]
-    }
+  console.log("languages in chart", typeof languages);
+  console.log("languages in chart", languages.length);
+  let makeLanguageArray = [];
+  let makeLanguageCountArray = [];
 
-return (
+  for (let i = 0; i < languages.length; i++) {
+    // console.log("i type number repos", languages[i][1])
+    if (languages[i][1] >= 136) {
+      console.log("languages in if", languages[i][1]);
+      makeLanguageArray.push(languages[i][0]);
+      makeLanguageCountArray.push(languages[i][1]);
+    }
+  }
+  // console.log("makeLangArr", makeLanguageArray)
+  // console.log("makeLangCountArr", makeLanguageCountArray)
+  let testData = {
+    labels: makeLanguageArray,
+    datasets: [
+      {
+        label: "Number of Repos",
+        data: makeLanguageCountArray, // number of languages
+      },
+    ],
+  };
+
+  return (
     <div className="chart">
-        <Bar
-          data={testData}
-          options={{
-              maintainAspectRatio: false,
-            }}
-            ></Bar>
-      </div>
-    );
-}
+      <Bar
+        data={testData}
+        options={{
+          maintainAspectRatio: true,
+        }}
+      ></Bar>
+      <Line
+        data={testData}
+        options={{
+          maintainAspectRatio: true,
+        }}
+      ></Line>
+    </div>
+  );
+};
 
 export default Chart;
 

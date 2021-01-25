@@ -1,7 +1,7 @@
 import React from "react";
 
 const LanguageCard = ({ language }) => {
-  console.log("language in card", typeof language[1]);
+//   console.log("language in card", typeof language[1]);
   return (
     <div>
       {/* <div>why?</div> */}

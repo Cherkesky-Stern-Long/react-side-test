@@ -2,8 +2,8 @@ import React from "react";
 import LanguageCard from "./LanguageCard";
 
 const LanguageList = ({ languages }) => {
-    console.log("typeof languages in list", typeof languages)
-    console.log("languages in list", languages)
+    // console.log("typeof languages in list", typeof languages)
+    // console.log("languages in list", languages)
   const renderedList = languages.map((language) => {
     return <LanguageCard key={language[0]} language={language} />;
   });
